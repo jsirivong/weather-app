@@ -1,15 +1,15 @@
-import Navbar from '../components/Navbar.tsx'
-import Home from "../pages/Home.tsx"
 import './App.css'
+import Input from './components/input';
 
 export default function App(){
   return (
-    <div className='app-container'>
-      <Home/>
-      <div className='navbar-container'>
-        <Navbar/>
+    <div>
+      <h2 className='text-center text-white font-bold text-6xl pt-25'>Weather App</h2>
+      <p className='text-center text-white font-bold text-xl pt-3'>The look out for all your plans.</p>
+
+      <div>
+        <Input/>
       </div>
-      
     </div>
   );
 }
