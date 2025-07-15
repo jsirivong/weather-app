@@ -1,20 +1,22 @@
 import { useEffect, useState, type FormEvent } from "react"
 import { useNavigate } from 'react-router-dom'
 import getWeatherData from "../services/api";
-import type CurrentWeatherData from "../types/WeatherData";
+import type CurrentWeatherData from "../types/CurrentWeatherData";
 
 export default function Input(){
     const [ input, setInput ] = useState("");
     const navigate = useNavigate()
 
-    const handleWeather = async (data: any): Promise<void> => {
-        const weatherData: CurrentWeatherData = await data;  
+    const handleWeather = async<T,>(data: T): Promise<void> => {
+        if (data === null) return;
+
+        const weatherData: T = await data;  
 
         if (weatherData) {
             setInput("");
-            navigate("/weather", {state: {data: weatherData}})
+            navigate("/weather", {state: {data: weatherData}});
         } else {
-            return
+            return;
         }
     }
 
@@ -25,9 +27,7 @@ export default function Input(){
             return
         }
 
-        const data = getWeatherData({city: input, api_method: "/current.json"})
-
-        handleWeather(data)
+       getWeatherData({city: input, api_method: "/current.json"}).then(data => handleWeather<CurrentWeatherData | null>(data))
     }
     
     useEffect(() => {
