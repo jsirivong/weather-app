@@ -17,9 +17,6 @@ export default function Title({ location, region, country, localtime }: IProps) 
             <h2 className="text-white font-bold text-2xl m-5 translate-y-14">
                 {localtime}
             </h2>
-            <div className="flex">
-                
-            </div>
         </div>
     )
 }
