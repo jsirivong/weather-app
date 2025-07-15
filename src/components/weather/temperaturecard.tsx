@@ -29,7 +29,7 @@ export default function TemperatureCard({ temp_f, temp_c, condition_icon, condit
                     throw new Error("Not a valid unit measurement of temperature.")
                 }
                 }} className="text-center hover:text-gray-400 text-white hover:cursor-grab">Switch</button>
-            <img src={condition_icon} className="scale-120 m-5"/>
+            <img src={condition_icon} alt={condition_status} className="scale-120 m-5"/>
             <h2 className="text-white text-4xl">{condition_status}</h2>
             <h2 className="text-white text-4xl m-10">{temperatureSign === "Fahrenheit" ? feelsLikeFahrenheitText : feelsLikeCelsiusText}</h2>
         </div>
